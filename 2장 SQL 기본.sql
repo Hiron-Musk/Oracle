@@ -100,4 +100,77 @@ create table parent(
     insert into user5(name, gender)values('이순신','M');
     insert into user5(name, age)values('정약용',33);
     
+--실습하기 3-1
+    select * from dic;
+    
+    select table_name from user_tables;
+    
+    select owner, table_name from all_tables;
+    
+    select * from dba_tables;
+    
+    select * from dba_users;
+
+--실습하기 3-2
+    select * from user_indexes;
+    
+    select * from user_ind_columns;
+    
+    create index idx_user1_uid on user1(`id`);
+    select * from user_ind_columns;
+    
+    drop index idx_user1_uid;
+    select * from user_ind_columns;
+    
+--실습하기 3-3
+    create view vw_user1 as(select name, hp, age from user1);
+    create view vw_user2_age_under30 as(select * from user2 where age<30);
+    select * from user_views;
+    
+    select * from vw_user1;
+    select * from vw_user2_age_under30;
+    
+    drop view vw_user1;
+    drop view vw_user2_age_under30;
+    
+--실습하기 3-5
+    create table user6(
+    seq number primary key,
+    name varchar(20),
+    gender char(1),
+    age number,
+    addr varchar(255)
+    );
+    
+--실습하기 3-6
+    create sequence seq_user6 increment by 1 start with 1;
+
+--실습하기 3-7
+    insert into user6 values(seq_user6.nextval,'김유신','M',25,'김해시');
+    insert into user6 values(seq_user6.nextval,'김춘추','M',23,'경주시');
+    insert into user6 values(seq_user6.nextval,'신사임당','F',27,'강릉시');
+    
+--실습하기 4-1
+    alter session set "_oracle_script"=true;
+    create user haabi1004 identified by 1234;
+    
+--실습하기 4-2
+    select * from all_users;
+    
+    select * from all_users where username='HAABI1004';
+    
+    alter user haabi1004 indentified by abc1234;
+    
+    drop user haabi1004;
+    
+    drop user haabi1004 cascade;
+    
+--실습하기 4-4
+    grant connect,resource to jsa7868;
+    
+    grant unlimited tablespace to jsa7868;
+    
+    ALTER TABLE 이전테이블이름 RENAME TO 새테이블이름;
+
+    
     
